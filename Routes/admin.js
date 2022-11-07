@@ -1,12 +1,13 @@
+const path = require("path");
+
 const express = require("express");
 
-const routers = express.Router(); //useing the Router feature of express
+const routers = express.Router(); //using the Router feature of express
 
+//GET request to /admin/add-product
 routers.get("/add-product", (req, res) => {
-  //GET request to /admin/add-product
-  res.send(
-    '<form action="/admin/add-product" method="POST"><input type="text" name="title"></br><input type="number" name="quantity"/></br><button type="submit">submit product</button></form>'
-  );
+  // get the directory name(Routes)-->../(one level up: this is our root)-->viwes(go to views folder)-->add-product.html(the html file)
+  res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
 });
 
 routers.post("/add-product", (req, res) => {

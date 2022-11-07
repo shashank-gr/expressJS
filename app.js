@@ -1,3 +1,5 @@
+const path = require("path");
+
 const express = require("express");
 const bodyParser = require("body-parser"); //getting the body parser utility
 
@@ -11,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false })); //parsing the form data ; h
 app.use("/admin", adminRoute); //hadels all the requests starting with /admin
 app.use("/shop", shopRoute); //hadels all the requests starting with /shop
 app.use((req, res, next) => {
-  res.status(404).send("<h2>Page not found: 404</h2>");
+  //__dirname(is already the root)-->go to views-->get 404.html
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
 app.listen(3500);
