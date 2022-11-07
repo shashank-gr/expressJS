@@ -9,6 +9,7 @@ const shopRoute = require("./Routes/shop");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false })); //parsing the form data ; has a default next() to flow the data
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/admin", adminRoute); //hadels all the requests starting with /admin
 app.use("/shop", shopRoute); //hadels all the requests starting with /shop
