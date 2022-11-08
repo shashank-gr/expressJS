@@ -5,6 +5,8 @@ const bodyParser = require("body-parser"); //getting the body parser utility
 
 const adminRoute = require("./Routes/admin");
 const shopRoute = require("./Routes/shop");
+const contactUs = require("./Routes/contactUs");
+const successPage = require("./Routes/success");
 
 const app = express();
 
@@ -13,6 +15,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/admin", adminRoute); //hadels all the requests starting with /admin
 app.use("/shop", shopRoute); //hadels all the requests starting with /shop
+app.use("/contactus", contactUs);
+app.use("/success", successPage);
 app.use((req, res, next) => {
   //__dirname(is already the root)-->go to views-->get 404.html
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
